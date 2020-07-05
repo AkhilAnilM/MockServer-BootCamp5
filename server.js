@@ -42,7 +42,7 @@ server.use((req, res, next) => {
 // Use default router
 // `${process.env.PORT}`,"0.0.0.0",
 server.use(router)
-server.listen(3000, () => {
+server.listen(`${process.env.PORT}`,"0.0.0.0", () => {
   console.log("JSON Server is running")
 })
 
