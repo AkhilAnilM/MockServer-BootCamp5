@@ -11,7 +11,7 @@ const updateRemote=()=>{
   fs.readFile('./db.json', (err, data) => {
     if (err) throw err;
     
-    fetch(`https://api.jsonbin.io/b/5f01f260bb5fbb1d2564833e`,{
+    fetch(`https://api.jsonbin.io/b/5f0d982354a3e04bf7cd8908`,{
             method:'PUT',
             headers:{
                 "Content-Type":"application/json"
@@ -29,7 +29,13 @@ const updateRemote=()=>{
   ,1000)
 }
 
+
 server.use(middlewares)
+
+server.use(jsonServer.rewriter({
+    "/books/:id/reviews/": "/reviews/?bookId=:id",
+    "/books/:id/reviews/": "/reviews/?bookId=:id"
+}))
 
 server.use(jsonServer.bodyParser)
 
